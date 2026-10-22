@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetWatch | Budget Monitoring System</title>
+
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body data-page="dashboard">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">BW</div>
+            <div>
+                <h2>BudgetWatch</h2>
+                <p>Financial Intelligence</p>
+            </div>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-link active">▦ Dashboard</a>
+            <a href="budgets.html" class="nav-link">▤ Budget Allocations</a>
+            <a href="expenditures.html" class="nav-link">₹ Expenditures</a>
+            <a href="anomalies.html" class="nav-link">⌁ Anomaly Monitoring</a>
+            <a href="alerts.html" class="nav-link">♧ Alerts</a>
+            <a href="reports.html" class="nav-link">▥ Reports</a>
+            <a href="admin.html" class="nav-link">⚙ Administration</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>BudgetWatch v1.0</p>
+            <a href="login.html" class="nav-link">⇥ Sign Out</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">Financial Management / Dashboard</p>
+                <h1>Budget Overview</h1>
+            </div>
+
+            <div class="profile">
+                <div class="profile-avatar">FO</div>
+                <div>
+                    <strong>Finance Officer</strong>
+                    <p>Administrator Demo</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="welcome-section">
+            <div>
+                <h2>Financial Monitoring Dashboard</h2>
+                <p>Monitor budget allocation, expenditure and utilization across departments.</p>
+            </div>
+
+            <div class="financial-year">
+                <label for="financialYear">Financial Year</label>
+                <select id="financialYear">
+                    <option value="2026-27">2026–27</option>
+                    <option value="2025-26">2025–26</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Allocated Budget</span>
+                    <span class="stat-icon blue">₹</span>
+                </div>
+                <h2 id="totalBudget">₹0</h2>
+                <p class="stat-note">Total approved allocations</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Expenditure</span>
+                    <span class="stat-icon green">↗</span>
+                </div>
+                <h2 id="totalExpenditure">₹0</h2>
+                <p class="stat-note">Recorded spending</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Budget Utilization</span>
+                    <span class="stat-icon purple">%</span>
+                </div>
+                <h2 id="utilizationRate">0%</h2>
+                <p class="stat-note">Expenditure divided by allocation</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Active Alerts</span>
+                    <span class="stat-icon orange">!</span>
+                </div>
+                <h2 id="activeAlerts">0</h2>
+                <p class="stat-note">Items requiring review</p>
+            </div>
+
+        </section>
+
+        <section class="content-grid">
+
+            <div class="panel chart-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Department-wise Budget</h3>
+                        <p>Allocated budget compared with expenditure</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Utilization Summary</h3>
+                        <p>Overall spending progress</p>
+                    </div>
+                </div>
+
+                <div class="utilization-display">
+                    <div class="progress-circle">
+                        <span id="circleUtilization">0%</span>
+                    </div>
+                    <h3>Overall Utilization</h3>
+                    <p id="remainingBudget">Remaining budget: ₹0</p>
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot green-dot"></span>
+                    Recorded expenditure
+                </div>
+
+                <div class="legend-item">
+                    <span class="legend-dot grey-dot"></span>
+                    Remaining allocation
+                </div>
+            </div>
+
+        </section>
+
+        <section class="panel table-panel">
+            <div class="panel-heading">
+                <div>
+                    <h3>Department Financial Summary</h3>
+                    <p>Overview of allocations and spending</p>
+                </div>
+
+                <a href="budgets.html" class="text-link">View Budgets →</a>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Department</th>
+                            <th>Allocated Budget</th>
+                            <th>Expenditure</th>
+                            <th>Utilization</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="departmentTable">
+                        <tr>
+                            <td colspan="5">Loading department data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>BudgetWatch — AI-Based Budget Utilization Monitoring System</p>
+            <p>Demonstration interface using illustrative sample data.</p>
+        </footer>
+
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

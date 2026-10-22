@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Monitoring | BudgetWatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="anomalies">
+
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">BW</div><div><h2>BudgetWatch</h2><p>Financial Intelligence</p></div></div>
+        <p class="menu-heading">MAIN MENU</p>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-link">▦ Dashboard</a>
+            <a href="budgets.html" class="nav-link">▤ Budget Allocations</a>
+            <a href="expenditures.html" class="nav-link">₹ Expenditures</a>
+            <a href="anomalies.html" class="nav-link active">⌁ Anomaly Monitoring</a>
+            <a href="alerts.html" class="nav-link">♧ Alerts</a>
+            <a href="reports.html" class="nav-link">▥ Reports</a>
+            <a href="admin.html" class="nav-link">⚙ Administration</a>
+        </nav>
+        <div class="sidebar-bottom"><p>BudgetWatch v1.0</p><a href="login.html" class="nav-link">⇥ Sign Out</a></div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><p class="breadcrumb">Monitoring / Anomalies</p><h1>Anomaly Monitoring</h1></div>
+            <div class="profile"><div class="profile-avatar">FO</div><div><strong>Finance Officer</strong><p>Demonstration Account</p></div></div>
+        </header>
+
+        <section class="welcome-section">
+            <div><h2>Spending Risk Analysis</h2><p>Review unusual spending and possible budget utilization issues.</p></div>
+            <button class="primary-btn" id="runAnomalyCheck">Run Rule Check</button>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card"><div class="stat-top"><span>Total Flags</span><span class="stat-icon orange">!</span></div><h2 id="anomalyCount">0</h2><p class="stat-note">Detected by monitoring rules</p></div>
+            <div class="stat-card"><div class="stat-top"><span>High Priority</span><span class="stat-icon orange">↑</span></div><h2 id="highAnomalyCount">0</h2><p class="stat-note">Requires prompt review</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Under-utilized</span><span class="stat-icon purple">↓</span></div><h2 id="underUtilizedCount">0</h2><p class="stat-note">Below configured threshold</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Overspending</span><span class="stat-icon blue">₹</span></div><h2 id="overspendingCount">0</h2><p class="stat-note">Expenditure above allocation</p></div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading"><div><h3>Detection Rules</h3><p>Rule-based checks used in this frontend demonstration.</p></div></div>
+            <div class="rule-grid">
+                <div class="rule-card"><span class="rule-label">RULE 01</span><h4>Under-utilization</h4><p>Flag a budget using less than 40% after 70% of the financial period has elapsed.</p></div>
+                <div class="rule-card"><span class="rule-label">RULE 02</span><h4>Overspending</h4><p>Flag recorded expenditure that exceeds its approved allocation.</p></div>
+                <div class="rule-card"><span class="rule-label">RULE 03</span><h4>Spending Spike</h4><p>Flag an unusually large transaction compared with a configured reference amount.</p></div>
+            </div>
+        </section>
+
+        <section class="panel table-panel">
+            <div class="panel-heading"><div><h3>Detected Anomalies</h3><p>Flags require human review and are not proof of wrongdoing.</p></div><input type="search" id="anomalySearch" class="search-input" placeholder="Search anomalies..."></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Flag ID</th><th>Department</th><th>Issue</th><th>Details</th><th>Severity</th><th>Action</th></tr></thead>
+                    <tbody id="anomalyTable"><tr><td colspan="6">Loading anomaly records...</td></tr></tbody>
+                </table>
+            </div>
+            <p class="form-message" id="anomalyMessage"></p>
+        </section>
+
+        <footer class="footer"><p>BudgetWatch — Budget Utilization Monitoring System</p><p>Rule-based demonstration; not an audit finding.</p></footer>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

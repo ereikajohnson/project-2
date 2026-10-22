@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenditures | BudgetWatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="expenditures">
+
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">BW</div><div><h2>BudgetWatch</h2><p>Financial Intelligence</p></div></div>
+        <p class="menu-heading">MAIN MENU</p>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-link">▦ Dashboard</a>
+            <a href="budgets.html" class="nav-link">▤ Budget Allocations</a>
+            <a href="expenditures.html" class="nav-link active">₹ Expenditures</a>
+            <a href="anomalies.html" class="nav-link">⌁ Anomaly Monitoring</a>
+            <a href="alerts.html" class="nav-link">♧ Alerts</a>
+            <a href="reports.html" class="nav-link">▥ Reports</a>
+            <a href="admin.html" class="nav-link">⚙ Administration</a>
+        </nav>
+        <div class="sidebar-bottom"><p>BudgetWatch v1.0</p><a href="login.html" class="nav-link">⇥ Sign Out</a></div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><p class="breadcrumb">Financial Management / Expenditures</p><h1>Expenditure Tracking</h1></div>
+            <div class="profile"><div class="profile-avatar">FO</div><div><strong>Finance Officer</strong><p>Demonstration Account</p></div></div>
+        </header>
+
+        <section class="welcome-section">
+            <div><h2>Record and Monitor Spending</h2><p>Maintain expenditure records for approved budgets.</p></div>
+            <button class="primary-btn" id="showExpenseForm">+ Record Expenditure</button>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card"><div class="stat-top"><span>Total Transactions</span><span class="stat-icon blue">#</span></div><h2 id="expenseCount">0</h2><p class="stat-note">Recorded entries</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Total Expenditure</span><span class="stat-icon green">₹</span></div><h2 id="expenseTotal">₹0</h2><p class="stat-note">Combined recorded spending</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Categories</span><span class="stat-icon purple">▤</span></div><h2 id="categoryCount">0</h2><p class="stat-note">Expense categories used</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Needs Review</span><span class="stat-icon orange">!</span></div><h2 id="expenseReviewCount">0</h2><p class="stat-note">Transactions flagged by rules</p></div>
+        </section>
+
+        <section class="panel form-panel hidden" id="expenseFormPanel">
+            <div class="panel-heading"><div><h3>Record New Expenditure</h3><p>Enter transaction information accurately.</p></div></div>
+            <form id="expenseForm" class="data-form">
+                <div class="form-grid">
+                    <div class="form-group"><label for="expenseDepartment">Department</label><select id="expenseDepartment" required><option value="">Select department</option><option>Health</option><option>Education</option><option>Public Works</option><option>Agriculture</option><option>Rural Development</option></select></div>
+                    <div class="form-group"><label for="expenseCategory">Expense Category</label><select id="expenseCategory" required><option value="">Select category</option><option>Equipment</option><option>Salaries</option><option>Infrastructure</option><option>Supplies</option><option>Services</option><option>Other</option></select></div>
+                    <div class="form-group"><label for="expenseAmount">Amount (₹)</label><input type="number" id="expenseAmount" min="0.01" step="0.01" required></div>
+                    <div class="form-group"><label for="expenseDate">Transaction Date</label><input type="date" id="expenseDate" required></div>
+                    <div class="form-group"><label for="expenseReference">Reference Number</label><input type="text" id="expenseReference" required placeholder="Enter transaction reference"></div>
+                    <div class="form-group"><label for="expenseBudgetId">Budget ID</label><input type="text" id="expenseBudgetId" required placeholder="Enter related budget ID"></div>
+                    <div class="form-group full-width"><label for="expenseDescription">Description</label><textarea id="expenseDescription" rows="3" required placeholder="Describe the expenditure"></textarea></div>
+                    <div class="form-group full-width"><label for="expenseDocument">Supporting Document (optional)</label><input type="file" id="expenseDocument" accept=".pdf,.jpg,.jpeg,.png"></div>
+                </div>
+                <div class="form-actions"><button type="submit" class="primary-btn">Save Expenditure</button><button type="button" class="secondary-btn" id="cancelExpenseForm">Cancel</button></div>
+                <p class="form-message" id="expenseMessage"></p>
+            </form>
+        </section>
+
+        <section class="panel table-panel">
+            <div class="panel-heading"><div><h3>Expenditure Transactions</h3><p>Review recorded financial activity.</p></div><input type="search" id="expenseSearch" class="search-input" placeholder="Search transactions..."></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Transaction ID</th><th>Department</th><th>Category</th><th>Amount</th><th>Date</th><th>Reference</th><th>Status</th></tr></thead>
+                    <tbody id="expenseTable"><tr><td colspan="7">Loading transactions...</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer"><p>BudgetWatch — Budget Utilization Monitoring System</p><p>Illustrative frontend data only.</p></footer>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

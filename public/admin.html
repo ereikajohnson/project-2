@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration | BudgetWatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="admin">
+
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">BW</div><div><h2>BudgetWatch</h2><p>Financial Intelligence</p></div></div>
+        <p class="menu-heading">MAIN MENU</p>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-link">▦ Dashboard</a>
+            <a href="budgets.html" class="nav-link">▤ Budget Allocations</a>
+            <a href="expenditures.html" class="nav-link">₹ Expenditures</a>
+            <a href="anomalies.html" class="nav-link">⌁ Anomaly Monitoring</a>
+            <a href="alerts.html" class="nav-link">♧ Alerts</a>
+            <a href="reports.html" class="nav-link">▥ Reports</a>
+            <a href="admin.html" class="nav-link active">⚙ Administration</a>
+        </nav>
+        <div class="sidebar-bottom"><p>BudgetWatch v1.0</p><a href="login.html" class="nav-link">⇥ Sign Out</a></div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><p class="breadcrumb">System Management / Administration</p><h1>Administration</h1></div>
+            <div class="profile"><div class="profile-avatar">AD</div><div><strong>System Administrator</strong><p>Demonstration Account</p></div></div>
+        </header>
+
+        <section class="welcome-section">
+            <div><h2>System Configuration</h2><p>Manage departments, demo user records and monitoring thresholds.</p></div>
+        </section>
+
+        <section class="content-grid">
+            <div class="panel">
+                <div class="panel-heading"><div><h3>Department Management</h3><p>Add departments to the demonstration system.</p></div></div>
+                <form id="departmentForm" class="data-form">
+                    <div class="form-group">
+                        <label for="newDepartment">Department Name</label>
+                        <input type="text" id="newDepartment" required placeholder="Enter department name">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="primary-btn">Add Department</button>
+                    </div>
+                    <p id="departmentMessage" class="form-message"></p>
+                </form>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Department</th><th>Action</th></tr></thead>
+                        <tbody id="departmentAdminTable"><tr><td colspan="2">Loading departments...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading"><div><h3>Monitoring Thresholds</h3><p>Configure rule-based warning limits.</p></div></div>
+                <form id="thresholdForm" class="data-form">
+                    <div class="form-group">
+                        <label for="underUtilizationThreshold">Minimum Utilization (%)</label>
+                        <input type="number" id="underUtilizationThreshold" min="0" max="100" value="40" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="elapsedTimeThreshold">Elapsed Financial Period (%)</label>
+                        <input type="number" id="elapsedTimeThreshold" min="0" max="100" value="70" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spikeThreshold">Large Transaction Reference (₹)</label>
+                        <input type="number" id="spikeThreshold" min="1" value="500000" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="primary-btn">Save Thresholds</button>
+                    </div>
+                    <p id="thresholdMessage" class="form-message"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="panel table-panel">
+            <div class="panel-heading"><div><h3>User Management</h3><p>Example user roles for the planned role-based system.</p></div></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>User</th><th>Role</th><th>Department</th><th>Access</th></tr></thead>
+                    <tbody id="userAdminTable">
+                        <tr><td>Demo Administrator</td><td>Admin</td><td>All Departments</td><td><span class="status status-normal">Full Demo Access</span></td></tr>
+                        <tr><td>Demo Finance Officer</td><td>Finance Officer</td><td>Finance</td><td><span class="status status-warning">Demo Only</span></td></tr>
+                        <tr><td>Demo Department Head</td><td>Department Head</td><td>Education</td><td><span class="status status-warning">Demo Only</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="form-message">This frontend does not enforce real user permissions. Authentication and role-based authorization must be implemented securely in the backend.</p>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading"><div><h3>Audit Activity</h3><p>Demonstration log of actions performed in this browser.</p></div></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Time</th><th>Activity</th><th>Details</th></tr></thead>
+                    <tbody id="auditTable"><tr><td colspan="3">No activity recorded yet.</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer"><p>BudgetWatch — Budget Utilization Monitoring System</p><p>Administrative changes are browser-local until a backend is added.</p></footer>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

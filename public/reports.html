@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | BudgetWatch</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-page="reports">
+
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">BW</div><div><h2>BudgetWatch</h2><p>Financial Intelligence</p></div></div>
+        <p class="menu-heading">MAIN MENU</p>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-link">▦ Dashboard</a>
+            <a href="budgets.html" class="nav-link">▤ Budget Allocations</a>
+            <a href="expenditures.html" class="nav-link">₹ Expenditures</a>
+            <a href="anomalies.html" class="nav-link">⌁ Anomaly Monitoring</a>
+            <a href="alerts.html" class="nav-link">♧ Alerts</a>
+            <a href="reports.html" class="nav-link active">▥ Reports</a>
+            <a href="admin.html" class="nav-link">⚙ Administration</a>
+        </nav>
+        <div class="sidebar-bottom"><p>BudgetWatch v1.0</p><a href="login.html" class="nav-link">⇥ Sign Out</a></div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><p class="breadcrumb">Financial Management / Reports</p><h1>Reports and Analytics</h1></div>
+            <div class="profile"><div class="profile-avatar">FO</div><div><strong>Finance Officer</strong><p>Demonstration Account</p></div></div>
+        </header>
+
+        <section class="welcome-section">
+            <div><h2>Financial Performance Reports</h2><p>Summarize allocations, expenditure and department utilization.</p></div>
+            <button class="primary-btn" id="exportReport">Export CSV</button>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading"><div><h3>Report Filters</h3><p>Select the data you want to review.</p></div></div>
+            <div class="filter-row">
+                <div class="form-group">
+                    <label for="reportYear">Financial Year</label>
+                    <select id="reportYear">
+                        <option value="2026-27">2026–27</option>
+                        <option value="2025-26">2025–26</option>
+                        <option value="All">All Years</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportDepartment">Department</label>
+                    <select id="reportDepartment">
+                        <option value="All">All Departments</option>
+                        <option>Health</option>
+                        <option>Education</option>
+                        <option>Public Works</option>
+                        <option>Agriculture</option>
+                        <option>Rural Development</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportType">Report Type</label>
+                    <select id="reportType">
+                        <option value="summary">Budget Summary</option>
+                        <option value="utilization">Utilization Report</option>
+                    </select>
+                </div>
+            </div>
+            <button class="primary-btn" id="generateReport">Generate Report</button>
+            <p id="reportMessage" class="form-message"></p>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card"><div class="stat-top"><span>Allocated Budget</span><span class="stat-icon blue">₹</span></div><h2 id="reportAllocated">₹0</h2><p class="stat-note">Selected records</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Expenditure</span><span class="stat-icon green">↗</span></div><h2 id="reportSpent">₹0</h2><p class="stat-note">Recorded spending</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Remaining Budget</span><span class="stat-icon purple">₹</span></div><h2 id="reportRemaining">₹0</h2><p class="stat-note">Allocation minus expenditure</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Utilization</span><span class="stat-icon orange">%</span></div><h2 id="reportUtilization">0%</h2><p class="stat-note">Spending as a share of allocation</p></div>
+        </section>
+
+        <section class="content-grid">
+            <div class="panel">
+                <div class="panel-heading"><div><h3>Department Comparison</h3><p>Budget allocation and expenditure</p></div></div>
+                <div class="chart-container"><canvas id="reportChart"></canvas></div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading"><div><h3>Report Information</h3><p>How to interpret this summary</p></div></div>
+                <div class="info-block">
+                    <h4>Utilization Rate</h4>
+                    <p>Expenditure divided by allocated budget, multiplied by 100.</p>
+                </div>
+                <div class="info-block">
+                    <h4>Remaining Budget</h4>
+                    <p>Allocated budget minus recorded expenditure. Negative values indicate spending above allocation.</p>
+                </div>
+                <div class="info-block">
+                    <h4>Export</h4>
+                    <p>Download the currently selected report data as a CSV file for spreadsheet analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel table-panel">
+            <div class="panel-heading"><div><h3>Report Details</h3><p>Department-level figures for the selected filters.</p></div></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Department</th><th>Financial Year</th><th>Allocated</th><th>Expenditure</th><th>Remaining</th><th>Utilization</th></tr></thead>
+                    <tbody id="reportTable"><tr><td colspan="6">Generate a report to view details.</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer"><p>BudgetWatch — Budget Utilization Monitoring System</p><p>Illustrative data; verify sources before official use.</p></footer>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

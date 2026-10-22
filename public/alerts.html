@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts | BudgetWatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="alerts">
+
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">BW</div><div><h2>BudgetWatch</h2><p>Financial Intelligence</p></div></div>
+        <p class="menu-heading">MAIN MENU</p>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-link">▦ Dashboard</a>
+            <a href="budgets.html" class="nav-link">▤ Budget Allocations</a>
+            <a href="expenditures.html" class="nav-link">₹ Expenditures</a>
+            <a href="anomalies.html" class="nav-link">⌁ Anomaly Monitoring</a>
+            <a href="alerts.html" class="nav-link active">♧ Alerts</a>
+            <a href="reports.html" class="nav-link">▥ Reports</a>
+            <a href="admin.html" class="nav-link">⚙ Administration</a>
+        </nav>
+        <div class="sidebar-bottom"><p>BudgetWatch v1.0</p><a href="login.html" class="nav-link">⇥ Sign Out</a></div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div><p class="breadcrumb">Monitoring / Alerts</p><h1>Financial Alerts</h1></div>
+            <div class="profile"><div class="profile-avatar">FO</div><div><strong>Finance Officer</strong><p>Demonstration Account</p></div></div>
+        </header>
+
+        <section class="welcome-section">
+            <div><h2>Alert Centre</h2><p>Review flagged budget activity and track follow-up actions.</p></div>
+            <button class="secondary-btn" id="markAllRead">Mark All Reviewed</button>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card"><div class="stat-top"><span>Total Alerts</span><span class="stat-icon blue">♧</span></div><h2 id="alertTotal">0</h2><p class="stat-note">All current alerts</p></div>
+            <div class="stat-card"><div class="stat-top"><span>High Severity</span><span class="stat-icon orange">!</span></div><h2 id="alertHigh">0</h2><p class="stat-note">High-priority items</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Pending Review</span><span class="stat-icon purple">◷</span></div><h2 id="alertPending">0</h2><p class="stat-note">Awaiting review</p></div>
+            <div class="stat-card"><div class="stat-top"><span>Reviewed</span><span class="stat-icon green">✓</span></div><h2 id="alertReviewed">0</h2><p class="stat-note">Marked as reviewed</p></div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading"><div><h3>Filter Alerts</h3><p>Choose a status or severity to narrow the list.</p></div></div>
+            <div class="filter-row">
+                <div class="form-group">
+                    <label for="alertStatusFilter">Review Status</label>
+                    <select id="alertStatusFilter">
+                        <option value="All">All statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Reviewed">Reviewed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="alertSeverityFilter">Severity</label>
+                    <select id="alertSeverityFilter">
+                        <option value="All">All severities</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="alertSearch">Search</label>
+                    <input type="search" id="alertSearch" placeholder="Search department or alert">
+                </div>
+            </div>
+        </section>
+
+        <section class="panel table-panel">
+            <div class="panel-heading"><div><h3>Alert History</h3><p>Review each alert and record its current status.</p></div></div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Alert ID</th><th>Date</th><th>Department</th><th>Alert Type</th><th>Severity</th><th>Status</th><th>Action</th></tr></thead>
+                    <tbody id="alertTable"><tr><td colspan="7">Loading alerts...</td></tr></tbody>
+                </table>
+            </div>
+            <p id="alertMessage" class="form-message"></p>
+        </section>
+
+        <footer class="footer"><p>BudgetWatch — Budget Utilization Monitoring System</p><p>Alerts are preliminary indicators for review.</p></footer>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
